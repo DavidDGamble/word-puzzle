@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#Header {
+  padding-top: 20px;
+  text-align: center;
+}
+
+#form {
+  text-align: center;
+}
+#inputId {
+  width: 20px;
+  margin-right: 4px;
+  text-transform: uppercase;
+}
