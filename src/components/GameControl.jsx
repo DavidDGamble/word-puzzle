@@ -1,55 +1,76 @@
 import React from "react";
 import GuessList from "./GuessList";
 import WordForm from "./WordForm";
-// import PropTypes from "prop-types";
+import words from './../words';
 
 
 class GameControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentWord: "booger",
+      currentWord: this.handleRandomWords(),
       guessList: [],
+      reset: false
     };
   }
 
+  switchReset = () => {
+    this.setState({ reset: !this.state.reset });
+  }
+
   handleGuess = (guess) => {
-    const currWord = this.state.currentWord;
-    let newGuess = [];
+    if (this.state.guessList.length < 6) {
+      const currWord = this.state.currentWord;
+      let newGuess = [];
 
-    for (let i = 0; i < guess.length; i++) {
-      if (guess[i] === currWord[i]) {
-        newGuess.push(guess[i]);
-      } else {
-        newGuess.push('0');
+      for (let i = 0; i < guess.length; i++) {
+        if (guess[i] === currWord[i]) {
+          newGuess.push(guess[i]);
+        } else {
+          newGuess.push('0');
+        }
       }
-    }
 
-    const newGuessList = this.state.guessList.concat([newGuess.join('')]);
-    this.setState({ guessList: newGuessList });
+      const newGuessList = this.state.guessList.concat([newGuess.join('')]);
+      this.setState({ guessList: newGuessList });
+    } else {
+      return;
+    }
   };
 
+  // Generates a random word, test array for now, array will have more words after testing
+  handleRandomWords = () => {
+    const randomIndex = Math.floor(Math.random() * words.length);
+    return words[randomIndex];
+  }
+  // ------------------------------------------------------------------
+  
+  
   checkWin = () => {
     let guess = this.state.guessList;
     return this.state.currentWord === this.state.guessList[this.state.guessList.length - 1];
   }
 
+
+
   render() {
+    console.log(this.state.currentWord);
+    let resetBtn = null;
     let status;
-console.log(this.state.guessList);
     if (this.checkWin()) {
       status = 'WINNER!'
-    } else if (this.state.guessList.length >= 6) { 
-      status = 'LOSER!'
+    } else if (this.state.guessList.length >= 6) {
+      status = "YOU'RE A GREAT GUY, BUT YOU LOST!"
     }
 
     return (
       <React.Fragment>
-        <p>{status}</p>
+        <p className="statusText">{status}</p>
         <GuessList
           guessList={this.state.guessList} />
-        <WordForm 
-          onGuessClick={this.handleGuess}/>
+        <WordForm
+          onGuessClick={this.handleGuess} />
+        {resetBtn}
       </React.Fragment>
     )
   };

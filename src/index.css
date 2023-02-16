@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: lavender;
 }
 
 code {
@@ -29,6 +30,9 @@ code {
 
 .guess {
   text-align: center;
+  margin-top: 10px;
+  text-transform: uppercase;
+  /* margin-bottom: 10px; */
 
 }
 
@@ -38,7 +42,7 @@ code {
   width: 20px;
   padding-left: 7.5px;
   padding-right: 7.5px;
-  padding-bottom: 4px;
+  /* padding-bottom: 2px; */
   margin-top: 10px;
   margin-bottom: 10px;
   border: 1px solid black;
@@ -46,5 +50,7 @@ code {
   width: absolute;
 }
 
-
-
+.statusText {
+  text-align: center;
+  font-weight: bold;
+}

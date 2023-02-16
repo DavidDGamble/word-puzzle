@@ -10,7 +10,7 @@ function Guess(props) {
             <p className="4">{props.four}</p>
             <p className="5">{props.five}</p>
             <p className="6">{props.six}</p>
-        </div>
+        </div>        
     )
 };
 
