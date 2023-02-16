@@ -9,13 +9,16 @@ class GameControl extends React.Component {
     super(props);
     this.state = {
       currentWord: this.handleRandomWords(),
-      guessList: [],
-      reset: false
+      guessList: []
     };
   }
 
-  switchReset = () => {
-    this.setState({ reset: !this.state.reset });
+  handleNewWord = () => {
+    const newCurrWord = this.handleRandomWords();
+    this.setState({ 
+      currentWord: newCurrWord,
+      guessList: []
+    });
   }
 
   handleGuess = (guess) => {
@@ -54,18 +57,23 @@ class GameControl extends React.Component {
 
 
   render() {
-    console.log(this.state.currentWord);
+    // console.log(this.state.currentWord);
     let resetBtn = null;
-    let status;
+    let status = null;
+    let currWord = null;
     if (this.checkWin()) {
       status = 'WINNER!'
+      resetBtn = <button className="reset-btn" onClick={this.handleNewWord}>New Word</button>
     } else if (this.state.guessList.length >= 6) {
       status = "YOU'RE A GREAT GUY, BUT YOU LOST!"
+      currWord = this.state.currentWord;
+      resetBtn = <button className="reset-btn" onClick={this.handleNewWord}>New Word</button>
     }
 
     return (
       <React.Fragment>
         <p className="statusText">{status}</p>
+        <p className="curr-word">{currWord}</p>
         <GuessList
           guessList={this.state.guessList} />
         <WordForm

@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: lavender;
+  text-align: center;
 }
 
 code {
@@ -53,4 +54,15 @@ code {
 .statusText {
   text-align: center;
   font-weight: bold;
+}
+
+.reset-btn {
+  margin-top: 5px;
+}
+
+.curr-word {
+  text-align: center;
+  font-weight: bold;
+  color: red;
+  text-transform: uppercase;
 }

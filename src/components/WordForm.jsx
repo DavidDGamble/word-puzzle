@@ -25,8 +25,6 @@ function WordForm(props) {
   const handleChange = e => {
     const { maxLength, value, name } = e.target;
     const [fieldName, fieldIndex] = name.split("x");
-    console.log(fieldName);
-    console.log(fieldIndex);
   
     // Check if they hit the max character length
     if (value.length >= maxLength) {
@@ -63,7 +61,6 @@ function WordForm(props) {
         </form>
       </div>
     </React.Fragment>
-
   )
   }
 
