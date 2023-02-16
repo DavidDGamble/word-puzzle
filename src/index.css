@@ -20,8 +20,31 @@ code {
 #form {
   text-align: center;
 }
+
 #inputId {
   width: 20px;
   margin-right: 4px;
   text-transform: uppercase;
 }
+
+.guess {
+  text-align: center;
+
+}
+
+.guess > p{
+  display: inline;
+  height: 20px;
+  width: 20px;
+  padding-left: 7.5px;
+  padding-right: 7.5px;
+  padding-bottom: 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+  margin: 4px;
+  width: absolute;
+}
+
+
+
